@@ -189,6 +189,13 @@ class Relation(pd.DataFrame):
             raise ValueError("The two relations must have some columns in common")
         return Relation(pd.merge(self,other,how='inner',on=list(col_list)))
 
+    def outerJoin(self,other):
+
+        #col_list = [x for x in self.columns if x not in other.columns]
+        col_list = [x for x in self.columns]
+        # if col_list:
+        #     pass
+        return Relation(pd.merge(self,other, how='outer', on=list(col_list)))
 
 
     def union(self,other):
