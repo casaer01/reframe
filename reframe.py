@@ -195,7 +195,7 @@ class Relation(pd.DataFrame):
         col_list = [x for x in self.columns]
         # if col_list:
         #     pass
-        return Relation(pd.merge(self,other, how='outer', on=list(col_list)))
+        return Relation(pd.merge(self,other, how='outer',))
 
 
     def union(self,other):
