@@ -191,11 +191,21 @@ class Relation(pd.DataFrame):
 
     def outerJoin(self,other):
 
-        #col_list = [x for x in self.columns if x not in other.columns]
-        col_list = [x for x in self.columns]
-        # if col_list:
-        #     pass
-        return Relation(pd.merge(self,other, how='outer',))
+        """ Takes two Relations and combines both at a common column with empty cells have the value NaN in them
+
+        :param other: The relation to combine with
+        :return: A complete combination of both relations into one
+
+        :Example:
+        
+        >>> from reframe import Relation
+        >>> db01 = Relation('databaseExample01.csv')
+        >>> db02 = Relation('databaseExample02.csv')
+        >>> db01.outerJoin(db02)
+
+        """
+        
+        return Relation(pd.merge(self,other, how='outer'))
 
 
     def union(self,other):
